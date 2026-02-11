@@ -1,0 +1,227 @@
+.proposal {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.proposal-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #fce4ec 0%, #f8bbd0 25%, #f48fb1 50%, #fce4ec 75%, #fff3e0 100%
+  );
+  background-size: 400% 400%;
+  animation: bgShift 12s ease-in-out infinite;
+}
+
+@keyframes bgShift {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+}
+
+.hearts-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart-particle {
+  position: absolute;
+  bottom: 0;
+  color: rgba(219, 39, 119, 0.25);
+  will-change: transform;
+}
+
+/* Floating couple photos */
+.floating-photo {
+  position: absolute;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(1px) saturate(0.6);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+/* Card */
+.proposal-card {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 2rem;
+  box-shadow:
+    0 8px 32px rgba(236, 72, 153, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  max-width: 420px;
+  width: 100%;
+}
+
+.proposal-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pink-400);
+  margin-bottom: 1.25rem;
+}
+
+.proposal-heart-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  color: var(--rose-500);
+  filter: drop-shadow(0 4px 12px rgba(244, 63, 94, 0.35));
+}
+
+.proposal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.proposal-title .highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--pink-500), var(--rose-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+  font-size: 2.6rem;
+}
+
+/* Button row */
+.btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.yes-wrap {
+  display: inline-block;
+  transform-origin: center center;
+}
+
+.btn-yes {
+  display: inline-block;
+  padding: 1rem 3.5rem;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--pink-500), var(--rose-500));
+  border-radius: 100px;
+  box-shadow:
+    0 4px 15px rgba(236, 72, 153, 0.35),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-yes::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+  border-radius: inherit;
+}
+
+.btn-yes:active {
+  box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3), 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* No button (inline) */
+.btn-no {
+  padding: 0.85rem 2.2rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #888;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid #e0e0e0;
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  user-select: none;
+  touch-action: none;
+}
+
+.btn-no-floating {
+  position: fixed;
+  z-index: 50;
+  transform: translate(-50%, -50%);
+}
+
+/* Reaction area - reserves space so card doesn't clip */
+.reaction-area {
+  min-height: 3.5rem;
+  padding-top: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.yes-reaction {
+  text-align: center;
+}
+
+.yes-reaction-text {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--pink-600);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.reaction {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--pink-600);
+  min-height: 1.5rem;
+}
+
+.reaction.gone {
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink-500), var(--rose-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 380px) {
+  .proposal-card { padding: 2rem 1.5rem; }
+  .proposal-title { font-size: 1.7rem; }
+  .proposal-title .highlight { font-size: 2.2rem; }
+  .proposal-heart-icon { font-size: 2.8rem; }
+  .btn-yes { padding: 0.9rem 2.4rem; font-size: 1.05rem; }
+  .btn-no { padding: 0.75rem 1.8rem; font-size: 0.85rem; }
+  .btn-row { gap: 0.75rem; }
+}
+
+@media (min-width: 768px) {
+  .proposal-card { padding: 3.5rem 3rem; max-width: 480px; }
+  .proposal-title { font-size: 2.4rem; }
+  .proposal-title .highlight { font-size: 3rem; }
+  .proposal-heart-icon { font-size: 4.5rem; }
+}
